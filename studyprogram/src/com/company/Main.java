@@ -7,33 +7,31 @@ import java.awt.event.ActionListener;
 
 public class Main extends JFrame {
     private JPanel contentPane;
-    public studyPanel StudyPanel = new studyPanel();
+    public studyPanel StudyPanel;
     public static String filename;
     public Main(){
 
         setTitle("암기프로그램");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(0,0,720,1000);
+        setBounds(0,0,1530,800);
         contentPane = new JPanel();
         setContentPane(contentPane);
         //setContentPane(StudyPanel.studypane);
         contentPane.setLayout(null);
-        contentPane.add(StudyPanel.studypane);
-        StudyPanel.studypane.setVisible(false);
 
 
 
         JLabel titlelabel = new JLabel("암기프로그램");                                       //패널제목
         titlelabel.setFont(new Font("Serif", Font.BOLD, 35));
-        titlelabel.setBounds(260, 15, 720, 100);
+        titlelabel.setBounds(260, 15, 1280, 100);
 
         JLabel commandlabel = new JLabel("읽어드릴 메모장 파일을 입력하세요");                                       //패널제목
         commandlabel.setFont(new Font("Serif", Font.BOLD, 25));
-        commandlabel.setBounds(170, 400, 720, 100);
+        commandlabel.setBounds(170, 400, 1280, 100);
 
         JTextField TextField = new JTextField(60);
         TextField.setBounds(260,500,200,30);
-        TextField.setText("파일명.txt");
+        TextField.setText("운영체제.txt");
 
 
         JButton startButton = new JButton("START");
@@ -41,6 +39,10 @@ public class Main extends JFrame {
         startButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 filename = TextField.getText();
+                StudyPanel = new studyPanel(filename);
+                contentPane.add(StudyPanel.studypane);
+                StudyPanel.studypane.setVisible(false);
+
                 StudyPanel.studypane.setVisible(true);
                 //contentPane.setVisible(false);
 
