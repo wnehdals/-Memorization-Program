@@ -12,17 +12,16 @@ public class Step2 extends JPanel{
     private Main win;
     public String line = "";
     public int textSize = 14;
-
-
+    private int i;
+    Queue<String> queue = new LinkedList<String>();
     public Step2(Main win, String filename, int textSize) {
         this.win = win;
         this.textSize = textSize;
-        String s = "";
         win.currentpanelnumber = 2;
         String []parseline;
         win.y = 20;
-        int i=0;
-        Queue<String> queue = new LinkedList<String>();
+        i=0;
+
 
         setBounds(win.frameSize.width/4,0,1000,win.frameSize.height);
         boolean titleCheck = false;
