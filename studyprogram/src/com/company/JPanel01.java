@@ -7,28 +7,33 @@ import java.awt.event.ActionListener;
 
 public class JPanel01 extends JPanel {
     private Main win;
-    public String filename;
-    JTextField TextField;
-
+    private String filename;
+    private JTextField TextField;
+    private JLabel titlelabel;
+    private JLabel commandlabel;
+    private JButton startButton;
     public JPanel01(Main win) {
         this.win = win;
+        win.currentpanelnumber = 0;
+        setForeground(Color.WHITE);
+        setBackground(Color.white);
         setLayout(null);
-
-        JLabel titlelabel = new JLabel("암기프로그램");                                       //패널제목
+        setBounds(0,0,win.frameSize.width,win.frameSize.height);
+        titlelabel = new JLabel("암기프로그램");                                       //패널제목
         titlelabel.setFont(new Font("Serif", Font.BOLD, 35));
-        titlelabel.setBounds(260, 15, 1280, 100);
+        titlelabel.setBounds(win.frameSize.width-1100, win.frameSize.height-1000, 700, 100);
 
-        JLabel commandlabel = new JLabel("읽어드릴 메모장 파일을 입력하세요");                                       //패널제목
+        commandlabel = new JLabel("읽어드릴 메모장 파일을 입력하세요");                                       //패널제목
         commandlabel.setFont(new Font("Serif", Font.BOLD, 25));
-        commandlabel.setBounds(170, 400, 1280, 100);
+        commandlabel.setBounds(win.frameSize.width-1200, win.frameSize.height-700, 670, 100);
 
         TextField = new JTextField(60);
-        TextField.setBounds(260, 500, 200, 30);
-        TextField.setText("운영체제.txt");
+        TextField.setBounds(win.frameSize.width-1100, win.frameSize.height-600, 200, 30);
+        TextField.setText("컴구조chapter5.1.txt");
 
 
-        JButton startButton = new JButton("START");
-        startButton.setBounds(260, 550, 200, 60);
+        startButton = new JButton("START");
+        startButton.setBounds(win.frameSize.width-1100, win.frameSize.height-500,200, 60);
         add(titlelabel);
         add(commandlabel);
         add(startButton);
@@ -42,18 +47,21 @@ public class JPanel01 extends JPanel {
             filename = TextField.getText();
             win.setName(filename);
 
-            win.change("panel02");
+
+
+            win.change("step1",14);
+            win.mb.setVisible(true);
         }
     }
     /*
         startButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 filename = TextField.getText();
-                JPanel02 = new JPanel02(filename);
-                contentPane.add(JPanel02.studypane);
-                JPanel02.studypane.setVisible(false);
+                Step1 = new Step1(filename);
+                contentPane.add(Step1.studypane);
+                Step1.studypane.setVisible(false);
 
-                JPanel02.studypane.setVisible(true);
+                Step1.studypane.setVisible(true);
                 //contentPane.setVisible(false);
 
                 titlelabel.setVisible(false);
