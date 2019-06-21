@@ -1,0 +1,189 @@
+{Internal Memory}
+
+{Semiconductor Memory}
+{Memory}
+       - [Memory cell]들의 배열로 구성된 데이터 저장장소
+       - [Address]를 사용하여 cell 들의 위치를 지정
+{Memory Interface}
+     - [Address bus]
+     - [Data bus]
+     - [Control bus]
+         - nCS (chip select), nCE (chip enable) : 메모리 칩 선택
+         - R/nW (read/write) : 읽기/쓰기
+         - nOE (output enable) : 데이터 출력 통지
+{RAM}
+     - [읽기/쓰기 가능]
+     - [휘발성(volatile) 메모리]
+     - [임시 저장장치로 사용]
+     - RAM TYPE
+         - [SRAM( Static RAM)]
+         - [DRAM( Dynamic RAM)]
+{DRAM}
+
+     {DRAM}
+       - 캐패시터에 전하를 충전하는 방식으로 데이터를 저장
+       - 충전된 전하량으로 논리레벨 (0,1) 을 결정
+     {특성}
+       - 충전된 전하의 누설(leakage)
+           - 전원이 공급된 상태에서도 재충전이 필요
+              - 재충전 회로와 재충전 시간 필요
+       - 간단한 구조
+           - 비트당 필요 면적이 작아 집적도가 높음
+	     - 집적도 향상 -> 메모리공간 확대 ->어드레스 라인 증가 -> 입출력핀증가
+	        -> 패키지 크기 증가 -> 제품크기 증가
+	- 어드레스 다중화(multiplexing) : 어드레스 핀 수 절약
+	      - RAS(Row Addr, Strobe), CAS(Column Addr, Strobe)
+	- 저비용, 저속
+     [메인 메모리]에 주로 사용
+{SRAM}
+     {SRAM}
+	- 2진 값을 flip-flop을 사용하여 저장.
+	- 전력이 공급되는 동안 지정된 값을 계속 유지.
+     {특성}
+	- 누설 전류가 없음 : 재충전 필요없음.
+	- 복잡한 구조 : 비트당 필요면적이 커서 집적도 떨어짐
+	- 고비용, 고속.
+     [캐시 메모리]에 사용
+{ROM}
+     -읽기 전용 메모리
+     -비 휘발성 메모리
+     -ROM 유형
+          - OTP
+               -MROM
+               -PROM
+          - MTP
+               -EPROM
+               -EEPROM
+               -FLASH
+{MROM}
+     -제조과정에서 데이터 값 쓰기
+     -소량인 경우 고비용,대량 생산인 경우 최저 비용
+         -높은 고정 비용
+{PROM}
+     -한 번만 쓰여질 수 있따
+     -제조가 완료된 후에 사용자가 필요에 따라 임의로 쓸 수 있다.
+          -특별한 장치가 필요
+     -융통성과 편이성 제공: 대량 생산에 유용
+{EPROM/EEPROM}
+     erasable programmable
+         -자외선으로 데이터 삭제
+         -EPROM WRITER/PROGRAMMER를 사용하여 데이터 저장
+     Electrically Erasable
+         -전기적으로 데이터 삭제
+         -읽기보다 쓰기 동작에 많은 시간 소요
+{Flash Memory}
+     -EEPROM의 특수 형태
+         -비휘발성 메모리
+         -EPROM과EEPROM의 중간 정도의 가격과 성능
+         -EPROM보다 빠른 데이터 삭제
+         -높은 집적도
+         -블록 단위 삭제:바이트 단위 삭제 불가
+      -단점
+           - 블록단위 삭제
+           -메모리 마모:유한한 삭제-쓰기 동작
+             Wear leveling : 메모리 셀을 균등하게 사용함으로써 메모리 전체 수명을 연장하는 작업
+             over povisioning: 플래시 메모리에 필요한 작업에 필요한 예비 공간을 준비하는 작업
+{플래시 메모리 동작}
+     read : floating gate(fg)에 채워진 전하량에 따라 S-D 사이의 차이가 발생->
+     전류량의 차이에 따라 FG충전여부 판별
+     WRITE: FG에 전하를 충전
+     ERASE: FG에 전하를 방전
+     사용전압
+           Write:20v
+           read: 5v
+{NAND 플래쉬}
+     도시바에서발표
+     빠른 삭제 및 쓰기 시간
+     작은 칩 면적 사용,긴 수명
+     블록 단위 액세스
+     대룡양 저장장치에 적합
+{NOR 플래쉬}
+     인텔에서 발명
+     임의 액세스 가능
+     프로그램 ROM에 적합
+{Attribute                           NAND          NOR           }
+main application                 file storage    code execution
+storage capacity                 high             low
+cost epr bit                      better
+active power                     better
+standby power                                     better
+write speed                       good
+read speed                                         good
+{Chip Logic}
+16Mb DRAM(4M*4)구조
+     한 번에 4-비트 데이터를 일고 쓰기 가능
+     어드레스 핀 수 절약
+         행 어드래스와 열 어드레스의 다중화
+                 11 어드레스 핀 필요
+     어드레스 타이밍 신호
+        RAS(row address strobe/select)
+        CAS(column address strobe/select)
+     어드레스를 다중화 함으로써 핀 1개당 메모리 용량을 4배 증가시킬수 있음
+{Interleaved Memory}
+     메모리 대역폭 확장 방법
+        메모리 입출력 포트 수 증가
+        메로리 동작 주파수 증가
+        메모리 병렬화
+      Interleaved 메모리
+        메모리를 뱅크로 구성
+        메모리 액세스를 병렬화
+{Error Correction}
+     하드 결함
+        영구적인 물리적 결함
+        열악한 환경에서의 남용, 제조상의 결함, 마모
+     소프트 오루
+        메모리의 내용이 일시적으로 변경되는 가벼운 오류
+        전원공급장치 결함,알파입자
+           알파입자: 입자들은 방사능 붕괴결과로 발생 모든 물질에 존재
+           피할 수 없음
+      하드 및 소프트 오류 검출
+        오류 정정 회로 포함
+           해밍 코드
+{기본적인 DRAM 구조 향상}
+     SDRAM
+     DDR
+     RDRAM
+     CDRAM
+{SDRAM}
+     메모리 액세스가 외부 클럭에 동기화
+        큰 데이터 블록 전송에 최적
+     SDRAM 특성
+         Bust mode 사용
+            첫번쨰 액세스 이후 ,어드레스 셋업 시간과 행,열 라인의 per-change시간을 절약
+         multiple -bank 구조
+            2 또는 4개의 뱅크로 분리
+            온-칩 병렬처리 가능성 향상
+         mode register 사용
+            sdram을 특정 용도로 특화 가능
+            burst type, burst length, nCAS latency를 제어할 수 있음
+     control signal
+         제어 신호는 클럭의 rising edge에 동기
+         DQM(DATA MASK)
+             데이터 입출력을 제한함
+{SDRAM 명령어}
+      제어 신호와 어드레스 라인을 사용해서 명령어 전달
+{DDR SDRAM}
+     SDRAM을 개선
+       Single data rate SDRAM
+          클럭당 1-워드의 데이터를 전송
+          Rising edge 사용
+     DDR SDRAM
+       클럭당 데이터를 두번전송
+       Rising edge와 fallling edge 모두 사용
+{RDRAM} 
+     Rambu사에서 개발 인텔에서 Pentium과 Itanium 프로세서에 채용한 DRAM 구조
+         1 controller+up to 320 rdram chips
+      sdram과 경쟁
+      비동기 플록 프로토콜 사용
+           처음 480ns 액세스 후에 1.6Gpbs 전송가능 클럭당 2번 에디터 전송
+     제어버스
+       RAS,CAS,R/W,CE 사용 안함
+{CDRAM}
+    Mitsubishi사가 개발
+     SDRAM 캐시(16kb)를 일반 DRAM칩에 내장시킨것
+     SRAM 캐시 용도
+         64-비트 라인들로 구성된 실제 캐시로 사용
+             임의 액세스하는 경우에 효과적임
+         데이터 블록을 직렬 액세스 하기위한 버퍼로 사용
+             사용례 : 비트-맵 스크린을 갱신 REFRESH 하기 위해 데이터를 
+             DRAM 에서 SRAM 버퍼로 선인출한 후, 다음 데이터 액세스는 SRAM 버퍼에서 액세스 한다

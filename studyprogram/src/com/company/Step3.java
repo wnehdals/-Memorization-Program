@@ -3,6 +3,8 @@ package com.company;
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class Step3 extends JPanel{
@@ -10,19 +12,21 @@ public class Step3 extends JPanel{
     private Main win;
     public String line = "";
     public int textSize = 14;
+    private int i;
+    private JLabel [] contentLabel = new JLabel[200];
+    private boolean titleCheck;
+    Queue<String> queue = new LinkedList<String>();
+    private String []parseline;
+    private String newline;
     public Step3(Main win, String filename,int textSize) {
         this.win = win;
         this.textSize = textSize;
-        String s = "";
         win.currentpanelnumber = 3;
-        String []parseline;
         win.y = 20;
-        int i=0;
+        i=0;
         setBounds(win.frameSize.width/4,0,1000,win.frameSize.height);
-        boolean titleCheck = false;
-        Color color1 = new Color(0xe6e2e2);
-        Color color2 = new Color(0xffffff);
-        Color color3 = new Color(0x7ecef4);
+        titleCheck = false;
+
 
 
         setLayout(null);
@@ -36,13 +40,13 @@ public class Step3 extends JPanel{
             //입력 버퍼 생성
             BufferedReader bufReader = new BufferedReader(new InputStreamReader(new FileInputStream(file),"euc-kr"));
             while((line = bufReader.readLine()) != null){
-                JLabel [] contentLabel = new JLabel[72];
+                //JLabel [] contentLabel = new JLabel[72];
                 titleCheck = false;
                 if(line.contains("{")) {
                     titleCheck = true;
                 }
                 parseline = line.split("");
-                String newline = "";
+                newline = "";
                 boolean judge = false;
                 for(int j=0;j<parseline.length;j++){
                     if(parseline[j].equals("}")){
@@ -67,11 +71,11 @@ public class Step3 extends JPanel{
                 contentLabel[i].setBounds(win.x, win.y, win.width,textSize+5);
                 if(titleCheck == false) {
                     contentLabel[i].setOpaque(true);
-                    contentLabel[i].setBackground(color2);//글자배경색갈
+                    contentLabel[i].setBackground(new Color(0xffffff));//글자배경색갈
                 }
                 if(titleCheck){
                     contentLabel[i].setOpaque(true);
-                    contentLabel[i].setBackground(color3);//타이틀배경색갈
+                    contentLabel[i].setBackground(new Color(0x7ecef4));//타이틀배경색갈
                 }
                 add(contentLabel[i]);
                 win.y+=textSize+5;

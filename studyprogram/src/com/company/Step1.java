@@ -27,7 +27,7 @@ public class Step1 extends JPanel{
     private String []parseline;
     private int i;
     private boolean titleCheck;
-    private JLabel [] contentLabel = new JLabel[72];
+    private JLabel [] contentLabel = new JLabel[200];
     private Queue<String> queue = new LinkedList<String>();
     private String newline;
     private boolean judge = false;

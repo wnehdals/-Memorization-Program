@@ -13,21 +13,23 @@ public class Step2 extends JPanel{
     public String line = "";
     public int textSize = 14;
     private int i;
+    private JLabel [] contentLabel = new JLabel[200];
+    private boolean titleCheck;
     Queue<String> queue = new LinkedList<String>();
+    private String []parseline;
+    private String newline;
     public Step2(Main win, String filename, int textSize) {
         this.win = win;
         this.textSize = textSize;
         win.currentpanelnumber = 2;
-        String []parseline;
+
         win.y = 20;
         i=0;
 
 
         setBounds(win.frameSize.width/4,0,1000,win.frameSize.height);
-        boolean titleCheck = false;
-        Color color1 = new Color(0xe6e2e2);
-        Color color2 = new Color(0xffffff);
-        Color color3 = new Color(0x7ecef4);
+        titleCheck = false;
+
 
         setLayout(null);
 
@@ -41,13 +43,13 @@ public class Step2 extends JPanel{
             //입력 버퍼 생성
             BufferedReader bufReader = new BufferedReader(new InputStreamReader(new FileInputStream(file),"euc-kr"));
             while((line = bufReader.readLine()) != null){
-                JLabel [] contentLabel = new JLabel[72];
+                //JLabel [] contentLabel = new JLabel[72];
                 titleCheck = false;
                 if(line.contains("{")) {
                     titleCheck = true;
                 }
                 parseline = line.split("");
-                String newline = "";
+                newline = "";
                 boolean judge = true;   // 큐에 담아라
                 for(int j=0;j<parseline.length;j++){
                     if(parseline[j].equals("{")){
@@ -79,20 +81,20 @@ public class Step2 extends JPanel{
 
                 contentLabel[i] = new JLabel(newline);
                 contentLabel[i].setFont(new Font("맑은 고딕", Font.BOLD, textSize));
+                //contentLabel[i].setForeground(Color.orange);
+                //contentLabel[i].setBackground(Color.green);
                 contentLabel[i].setBounds(win.x, win.y, win.width,textSize+5);
+
                 if(titleCheck == false) {
                     contentLabel[i].setOpaque(true);
-                    contentLabel[i].setBackground(color2);//글자배경색갈
+                    contentLabel[i].setBackground(new Color(0xffffff));//글자배경색갈
                 }
                 if(titleCheck){
                     contentLabel[i].setOpaque(true);
-                    contentLabel[i].setBackground(color3);//타이틀배경색갈
+                    contentLabel[i].setBackground(new Color(0x7ecef4));//타이틀배경색갈
                 }
                 add(contentLabel[i]);
                 win.y+=textSize+5;
-
-
-                //s+=line+" ";
                 i++;
 
 

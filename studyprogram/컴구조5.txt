@@ -1,0 +1,73 @@
+{Internal Memory}
+
+{Semiconductor Memory}
+{Memory}
+       - [Memory cell]들의 배열로 구성된 데이터 저장장소
+       - [Address]를 사용하여 cell 들의 위치를 지정
+{Memory Interface}
+     - [Address bus]
+     - [Data bus]
+     - [Control bus]
+         - nCS (chip select), nCE (chip enable) : 메모리 칩 선택
+         - R/nW (read/write) : 읽기/쓰기
+         - nOE (output enable) : 데이터 출력 통지
+{RAM}
+     - [읽기/쓰기 가능]
+     - [휘발성(volatile) 메모리]
+     - [임시 저장장치로 사용]
+     - RAM TYPE
+         - [SRAM( Static RAM)]
+         - [DRAM( Dynamic RAM)]
+{DRAM}
+
+     {DRAM}
+       - 캐패시터에 전하를 충전하는 방식으로 데이터를 저장
+       - 충전된 전하량으로 논리레벨 (0,1) 을 결정
+     {특성}
+       - 충전된 전하의 누설(leakage)
+           - 전원이 공급된 상태에서도 재충전이 필요
+              - 재충전 회로와 재충전 시간 필요
+       - 간단한 구조
+           - 비트당 필요 면적이 작아 집적도가 높음
+	     - 집적도 향상 -> 메모리공간 확대 ->어드레스 라인 증가 -> 입출력핀증가
+	        -> 패키지 크기 증가 -> 제품크기 증가
+	- 어드레스 다중화(multiplexing) : 어드레스 핀 수 절약
+	      - RAS(Row Addr, Strobe), CAS(Column Addr, Strobe)
+	- 저비용, 저속
+     [메인 메모리]에 주로 사용
+{SRAM}
+     {SRAM}
+	- 2진 값을 flip-flop을 사용하여 저장.
+	- 전력이 공급되는 동안 지정된 값을 계속 유지.
+     {특성}
+	- 누설 전류가 없음 : 재충전 필요없음.
+	- 복잡한 구조 : 비트당 필요면적이 커서 집적도 떨어짐
+	- 고비용, 고속.
+     [캐시 메모리]에 사용
+{ROM}
+     -읽기 전용 메모리
+     -비 휘발성 메모리
+     -ROM 유형
+          - OTP
+               -MROM
+               -PROM
+          - MTP
+               -EPROM
+               -EEPROM
+               -FLASH
+{MROM}
+     -제조과정에서 데이터 값 쓰기
+     -소량인 경우 고비용,대량 생산인 경우 최저 비용
+         -높은 고정 비용
+{PROM}
+     -한 번만 쓰여질 수 있따
+     -제조가 완료된 후에 사용자가 필요에 따라 임의로 쓸 수 있다.
+          -특별한 장치가 필요
+     -융통성과 편이성 제공: 대량 생산에 유용
+{EPROM/EEPROM}
+     erasable programmable
+         -자외선으로 데이터 삭제
+         -EPROM WRITER/PROGRAMMER를 사용하여 데이터 저장
+     Electrically Erasable
+         -전기적으로 데이터 삭제
+         -읽기보다 쓰기 동작에 많은 시간 소요
